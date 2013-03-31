@@ -17,6 +17,7 @@
 		FCBB83B717086618000F3579 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBB83B617086618000F3579 /* Default@2x.png */; };
 		FCBB83B917086618000F3579 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCBB83B817086618000F3579 /* Default-568h@2x.png */; };
 		FCBB83C21708665A000F3579 /* ZZWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBB83C11708665A000F3579 /* ZZWebView.m */; };
+		FCBB83C5170866FC000F3579 /* ZZViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCBB83C4170866FC000F3579 /* ZZViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		FCBB83B817086618000F3579 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FCBB83C01708665A000F3579 /* ZZWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZZWebView.h; path = ZZWebView/ZZWebView.h; sourceTree = "<group>"; };
 		FCBB83C11708665A000F3579 /* ZZWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZZWebView.m; path = ZZWebView/ZZWebView.m; sourceTree = "<group>"; };
+		FCBB83C3170866FC000F3579 /* ZZViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZViewController.h; sourceTree = "<group>"; };
+		FCBB83C4170866FC000F3579 /* ZZViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 			children = (
 				FCBB83B117086618000F3579 /* ZZAppDelegate.h */,
 				FCBB83B217086618000F3579 /* ZZAppDelegate.m */,
+				FCBB83C3170866FC000F3579 /* ZZViewController.h */,
+				FCBB83C4170866FC000F3579 /* ZZViewController.m */,
 				FCBB83A917086618000F3579 /* Supporting Files */,
 			);
 			path = ZZWebViewSample;
@@ -181,6 +186,7 @@
 				FCBB83AF17086618000F3579 /* main.m in Sources */,
 				FCBB83B317086618000F3579 /* ZZAppDelegate.m in Sources */,
 				FCBB83C21708665A000F3579 /* ZZWebView.m in Sources */,
+				FCBB83C5170866FC000F3579 /* ZZViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
