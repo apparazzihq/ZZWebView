@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZZWebView;
+
 @protocol ZZWebViewDelegate <NSObject>
 
-- (NSString *)htmlForTag:(NSString *)tag;
+- (NSString *)webView:(ZZWebView *)webView htmlForTag:(NSString *)tag;
 
 @end
 

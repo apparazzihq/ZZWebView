@@ -30,7 +30,7 @@
     [webView loadHTMLString:html baseURL:nil];
 }
 
-- (NSString *)htmlForTag:(NSString *)tag {
+- (NSString *)webView:(ZZWebView *)webView htmlForTag:(NSString *)tag {
     
     if ([tag isEqualToString:@"title"]) return @"Page Title";
     else return @"This is the body. Bla bla bla.";

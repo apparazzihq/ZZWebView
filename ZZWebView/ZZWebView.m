@@ -57,7 +57,7 @@
                 [scanner setScanLocation:tagClosePosition+kTAG_CLOSE.length];
 
                 
-                NSString *replacementHTML = [self.zzDelegate htmlForTag:tagTitle];
+                NSString *replacementHTML = [self.zzDelegate webView:self htmlForTag:tagTitle];
                 [outputString appendString:replacementHTML];
             } else {
                 [outputString appendString:kTAG_OPEN];
