@@ -10,6 +10,7 @@
 
 #define kTAG_OPEN   @"<$"
 #define kTAG_CLOSE  @"$>"
+#define kESCAPE_CHAR '/'
 
 
 @interface NSScanner (Simple)
@@ -43,18 +44,25 @@
 
         int tagOpenPosition = [scanner scanLocation];
         
+        BOOL isEscaped = [string characterAtIndex:scanner.scanLocation-1] == kESCAPE_CHAR;
+        
         if (tagOpenPosition < string.length) {
             
             [scanner setScanLocation:tagOpenPosition+kTAG_OPEN.length];
-            NSString *tagTitle = [scanner scanUpToString:kTAG_CLOSE];
             
-            int tagClosePosition = scanner.scanLocation;
-            [scanner setScanLocation:tagClosePosition+kTAG_CLOSE.length];
+            if (!isEscaped) {
+                NSString *tagTitle = [scanner scanUpToString:kTAG_CLOSE];
+                
+                int tagClosePosition = scanner.scanLocation;
+                [scanner setScanLocation:tagClosePosition+kTAG_CLOSE.length];
 
+                
+                NSString *replacementHTML = [self.zzDelegate htmlForTag:tagTitle];
+                [outputString appendString:replacementHTML];
+            } else {
+                [outputString appendString:kTAG_OPEN];
+            }
             
-            NSString *replacementHTML = [self.zzDelegate htmlForTag:tagTitle];
-            [outputString appendString:replacementHTML];
-                        
         }
     } while (![scanner isAtEnd]);
     
