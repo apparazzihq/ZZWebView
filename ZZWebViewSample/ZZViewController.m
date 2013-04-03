@@ -25,7 +25,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://github.com/apparazzihq/ZZWebView/blob/master/ZZWebViewSample/example.htm"]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://raw.github.com/apparazzihq/ZZWebView/master/ZZWebViewSample/example.htm"]];
     
     [webView loadRequest:request];
 }
