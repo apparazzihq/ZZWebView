@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZZViewController : UIViewController
+@interface ZZViewController : UIViewController {
+    ZZWebView *webView;
+}
 
 @end

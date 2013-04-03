@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZZWebView : UIWebView
+@protocol ZZWebViewDelegate <NSObject>
+
+- (NSString *)htmlForTag:(NSString *)tag;
+
+@end
+
+@interface ZZWebView : UIWebView {
+    __unsafe_unretained id<ZZWebViewDelegate> _zzDelegate;
+}
+
+@property (nonatomic, assign) id zzDelegate;
 
 @end

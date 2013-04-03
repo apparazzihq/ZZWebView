@@ -10,10 +10,30 @@
 
 @implementation ZZViewController
 
+- (id)init {
+    if (self = [super init]) {
+        webView = [[ZZWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        webView.zzDelegate = self;
+    }
+    return self;
+}
+
 - (void)loadView {
-    ZZWebView *webView = [[ZZWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
     self.view = webView;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    NSString *html = @"<h1><$title$></h1><$body$>";
+    
+    [webView loadHTMLString:html baseURL:nil];
+}
+
+- (NSString *)htmlForTag:(NSString *)tag {
+    
+    if ([tag isEqualToString:@"title"]) return @"Page Title";
+    else return @"This is the body. Bla bla bla.";
 }
 
 @end
