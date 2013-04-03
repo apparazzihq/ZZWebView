@@ -19,10 +19,12 @@
 @interface ZZWebView : UIWebView <NSURLConnectionDelegate> {
     __unsafe_unretained id<ZZWebViewDelegate> _zzDelegate;
 
+    NSURL *url;
     NSURLResponse *receivedResponse;
     NSMutableData *receivedData;
 }
 
 @property (nonatomic, assign) id zzDelegate;
+@property (readonly) NSDictionary *query;
 
 @end

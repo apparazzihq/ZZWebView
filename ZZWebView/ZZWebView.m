@@ -30,11 +30,43 @@
 @end
 
 
+@interface NSDictionary (QueryString)
+
++ (NSDictionary *)dictionaryWithQueryString:(NSString *)queryString;
+
+@end
+
+@implementation NSDictionary (QueryString)
+
++ (NSDictionary *)dictionaryWithQueryString:(NSString *)queryString {
+    
+    NSMutableDictionary *result;
+    
+    NSArray *components = [queryString componentsSeparatedByString:@"&"];
+    for (NSString *component in components) {
+        NSArray *innerComponents = [component componentsSeparatedByString:@"="];
+        if (!result) result = [NSMutableDictionary dictionary];
+        result[innerComponents[0]] = innerComponents[1];
+    }
+    
+    return result;
+}
+
+@end
+
 @implementation ZZWebView
 
 @synthesize zzDelegate = _zzDelegate;
+@synthesize query;
+
+- (NSDictionary *)query {
+    return [NSDictionary dictionaryWithQueryString:url.query];
+}
+
+#pragma mark - UIWebView methods
 
 - (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL {
+    if (!url) url = baseURL;
     
     NSScanner *scanner = [NSScanner scannerWithString:string];
     NSMutableString *outputString = [NSMutableString stringWithString:@""];
@@ -70,6 +102,7 @@
 }
 
 - (void)loadRequest:(NSURLRequest *)request {
+    url = request.URL;
     NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
     if (connection) {
         receivedData = [NSMutableData data];
