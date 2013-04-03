@@ -25,15 +25,17 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSString *html = @"<h1><$title$></h1><$body$>";
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://github.com/apparazzihq/ZZWebView/blob/master/ZZWebViewSample/example.htm"]];
     
-    [webView loadHTMLString:html baseURL:nil];
+    [webView loadRequest:request];
 }
 
 - (NSString *)webView:(ZZWebView *)webView htmlForTag:(NSString *)tag {
     
-    if ([tag isEqualToString:@"title"]) return @"Page Title";
-    else return @"This is the body. Bla bla bla.";
+    if ([tag isEqualToString:@"name"]) return @"John Smith";
+    if ([tag isEqualToString:@"age"]) return @"45";
+    if ([tag isEqualToString:@"location"]) return @"New York, NY";
+    return nil;
 }
 
 @end

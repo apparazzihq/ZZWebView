@@ -69,4 +69,40 @@
     [super loadHTMLString:outputString baseURL:baseURL];
 }
 
+- (void)loadRequest:(NSURLRequest *)request {
+    NSURLConnection *connection = [NSURLConnection connectionWithRequest:request delegate:self];
+    if (connection) {
+        receivedData = [NSMutableData data];
+    }
+}
+
+#pragma mark - NSURLConnectionDelegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    receivedResponse = response;
+    [receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [receivedData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    connection = nil;
+    receivedData = nil;
+    
+    [self.delegate webView:self didFailLoadWithError:error];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    
+    NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)receivedResponse.textEncodingName));
+    
+    NSString *string = [[NSString alloc] initWithData:receivedData encoding:responseEncoding];
+    [self loadHTMLString:string baseURL:receivedResponse.URL];
+    
+    connection = nil;
+    receivedData = nil;
+}
+
 @end

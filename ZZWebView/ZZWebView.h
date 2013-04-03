@@ -16,8 +16,11 @@
 
 @end
 
-@interface ZZWebView : UIWebView {
+@interface ZZWebView : UIWebView <NSURLConnectionDelegate> {
     __unsafe_unretained id<ZZWebViewDelegate> _zzDelegate;
+
+    NSURLResponse *receivedResponse;
+    NSMutableData *receivedData;
 }
 
 @property (nonatomic, assign) id zzDelegate;
