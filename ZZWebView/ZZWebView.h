@@ -12,6 +12,7 @@
 
 @protocol ZZWebViewDelegate <NSObject>
 
+- (BOOL)webView:(ZZWebView *)webView navigatedToURL:(NSURL *)url;
 - (NSString *)webView:(ZZWebView *)webView htmlForTag:(NSString *)tag;
 
 @end

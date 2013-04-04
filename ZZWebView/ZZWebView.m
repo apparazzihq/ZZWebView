@@ -124,10 +124,11 @@
 #pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
-    
+
     if (![request.URL isEqual:url]) {
-        [self loadRequest:request];
+        url = request.URL;
+        BOOL shouldLoadRequest = [self.zzDelegate webView:self navigatedToURL:url];
+        if (shouldLoadRequest) [self loadRequest:request];
         return NO;
     }
     
