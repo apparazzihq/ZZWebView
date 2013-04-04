@@ -125,11 +125,12 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+    
+    if (![request.URL isEqual:url]) {
         [self loadRequest:request];
         return NO;
     }
-
+    
     return YES;
 }
 
