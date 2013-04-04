@@ -84,7 +84,8 @@
     NSMutableString *outputString = [NSMutableString stringWithString:@""];
     
     do {
-        [outputString appendString:[scanner scanUpToString:kTAG_OPEN]];
+        NSString *stringUpToTagOpen = [scanner scanUpToString:kTAG_OPEN];
+        if (stringUpToTagOpen) [outputString appendString:stringUpToTagOpen];
 
         int tagOpenPosition = [scanner scanLocation];
         
@@ -102,7 +103,7 @@
 
                 
                 NSString *replacementHTML = [self.zzDelegate webView:self htmlForTag:tagTitle];
-                [outputString appendString:replacementHTML];
+                if (replacementHTML) [outputString appendString:replacementHTML];
             } else {
                 [outputString appendString:kTAG_OPEN];
             }
