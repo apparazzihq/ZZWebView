@@ -59,8 +59,20 @@
 @synthesize zzDelegate = _zzDelegate;
 @synthesize query;
 
+- (id)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        self.delegate = self;
+    }
+    return self;
+}
+
 - (NSDictionary *)query {
     return [NSDictionary dictionaryWithQueryString:url.query];
+}
+
+- (void)setDelegate:(id<UIWebViewDelegate>)delegate {
+    NSAssert(!self.delegate, @"ZZWebView: You cannot set the delegate property. Use the zzDelegate property instead.");
+    [super setDelegate:delegate];
 }
 
 #pragma mark - UIWebView methods
@@ -107,6 +119,18 @@
     if (connection) {
         receivedData = [NSMutableData data];
     }
+}
+
+#pragma mark - UIWebViewDelegate methods
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        [self loadRequest:request];
+        return NO;
+    }
+
+    return YES;
 }
 
 #pragma mark - NSURLConnectionDelegate methods

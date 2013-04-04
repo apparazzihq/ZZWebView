@@ -35,7 +35,12 @@
     if ([tag isEqualToString:@"name"]) return @"John Smith";
     if ([tag isEqualToString:@"age"]) return @"45";
     if ([tag isEqualToString:@"location"]) return @"New York, NY";
+    if ([tag isEqualToString:@"phone_number"]) return @"555-555-5555";
     return nil;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    NSLog(@"OBSERVED!");
 }
 
 @end

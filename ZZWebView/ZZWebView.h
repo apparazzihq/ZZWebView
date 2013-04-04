@@ -16,7 +16,7 @@
 
 @end
 
-@interface ZZWebView : UIWebView <NSURLConnectionDelegate> {
+@interface ZZWebView : UIWebView <UIWebViewDelegate, NSURLConnectionDelegate> {
     __unsafe_unretained id<ZZWebViewDelegate> _zzDelegate;
 
     NSURL *url;
