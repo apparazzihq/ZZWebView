@@ -129,7 +129,11 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    NSStringEncoding responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)receivedResponse.textEncodingName));
+    NSStringEncoding responseEncoding = NSUTF8StringEncoding; // Default encoding
+    
+    if (receivedResponse.textEncodingName) {
+        responseEncoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding((CFStringRef)receivedResponse.textEncodingName));
+    }
     
     NSString *string = [[NSString alloc] initWithData:receivedData encoding:responseEncoding];
     [self loadHTMLString:string baseURL:receivedResponse.URL];
