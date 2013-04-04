@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FC6211DC170C58A8003238FB /* example.htm in Resources */ = {isa = PBXBuildFile; fileRef = FC6211DB170C58A8003238FB /* example.htm */; };
+		FC6211E0170DCB00003238FB /* example2.htm in Resources */ = {isa = PBXBuildFile; fileRef = FC6211DF170DCB00003238FB /* example2.htm */; };
 		FCBB83A317086618000F3579 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCBB83A217086618000F3579 /* UIKit.framework */; };
 		FCBB83A517086618000F3579 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCBB83A417086618000F3579 /* Foundation.framework */; };
 		FCBB83A717086618000F3579 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCBB83A617086618000F3579 /* CoreGraphics.framework */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		FC6211DB170C58A8003238FB /* example.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example.htm; sourceTree = "<group>"; };
+		FC6211DF170DCB00003238FB /* example2.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = example2.htm; sourceTree = "<group>"; };
 		FCBB839F17086618000F3579 /* ZZWebViewSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZZWebViewSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCBB83A217086618000F3579 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FCBB83A417086618000F3579 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -107,6 +109,7 @@
 				FCBB83B617086618000F3579 /* Default@2x.png */,
 				FCBB83B817086618000F3579 /* Default-568h@2x.png */,
 				FC6211DB170C58A8003238FB /* example.htm */,
+				FC6211DF170DCB00003238FB /* example2.htm */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				FCBB83B717086618000F3579 /* Default@2x.png in Resources */,
 				FCBB83B917086618000F3579 /* Default-568h@2x.png in Resources */,
 				FC6211DC170C58A8003238FB /* example.htm in Resources */,
+				FC6211E0170DCB00003238FB /* example2.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
