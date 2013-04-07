@@ -122,14 +122,32 @@
     }
 }
 
+- (BOOL)isLocalRedirectFromURL:(NSURL *)oldURL toURL:(NSURL *)newURL {
+    if ([oldURL.absoluteString hasPrefix:@"file://localhost"]) {
+        NSString *oldURLSuffix = [oldURL.absoluteString stringByReplacingOccurrencesOfString:@"file://localhost" withString:@""];
+        NSString *newURLSuffix = [newURL.absoluteString stringByReplacingOccurrencesOfString:@"file://" withString:@""];
+        
+        if ([oldURLSuffix isEqualToString:newURLSuffix]) return YES;
+    }
+    return NO;
+}
+
 #pragma mark - UIWebViewDelegate methods
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-
+    
+    BOOL isLocalRedirect = [self isLocalRedirectFromURL:url toURL:request.URL];
+    
     if (![request.URL isEqual:url]) {
         url = request.URL;
-        BOOL shouldLoadRequest = [self.zzDelegate webView:self navigatedToURL:url];
-        if (shouldLoadRequest) [self loadRequest:request];
+        
+        if (isLocalRedirect) {
+            [self loadRequest:request];
+        } else {
+            BOOL shouldLoadRequest = [self.zzDelegate webView:self navigatedToURL:url];
+            if (shouldLoadRequest) [self loadRequest:request];
+        }
+
         return NO;
     }
     
